@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GR Store — Vestuário & Acessórios Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     CONFIGURAÇÃO — EDITE SOMENTE ESTA SEÇÃO
+     Para trocar imagens: cole o link raw do GitHub
+     Ex: https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPO/main/foto.jpg
+     ============================================================ -->
+<script>
+const CONFIG = {
+
+  /* --- SENHA DO PAINEL ADMIN --- */
+  adminPassword: "GR2025@admin",
+
+  /* --- TEXTOS PRINCIPAIS --- */
+  heroEyebrow: "Coleção Exclusiva · 2025",
+  heroTitle: "VESTE QUEM\nVOCÊ É",
+  heroSubtitle: "Cada peça da GR Store é pensada para quem sabe o que quer — qualidade premium, design autêntico e identidade que fala por si.",
+  heroCTA: "QUERO MEU LOOK AGORA",
+  heroAnchor: "#produtos",
+
+  /* --- GANCHO / PROBLEMA --- */
+  hookTitle: "Cansado de roupa sem personalidade?",
+  hookText: "O mercado está cheio de peças iguais, sem identidade e com qualidade duvidosa. Na GR Store, cada produto é selecionado para quem não aceita mediocridade.",
+  hookItems: [
+    "✦ Material premium que dura",
+    "✦ Design exclusivo, não tem igual",
+    "✦ Entrega rápida para todo Brasil"
+  ],
+
+  /* --- PROVA SOCIAL --- */
+  reviews: [
+    { name: "Lucas M.", stars: 5, text: "Camiseta incrível! Tecido pesado, não desbota e o acabamento é impecável. Já pedi mais duas." },
+    { name: "Ana P.", stars: 5, text: "A garrafa é lindíssima e funcional. Parece muito mais cara do que é. Super recomendo!" },
+    { name: "Rafael S.", stars: 5, text: "Boné perfeito, ajuste excelente e acabamento que não vejo em lojas comuns. Vale muito." }
+  ],
+
+  /* --- PRODUTOS --- */
+  /* Para imagem do GitHub:
+     imgUrl: "https://raw.githubusercontent.com/SEU_USUARIO/REPO/main/produto1.jpg"
+     Deixe imgUrl como "" para usar o emoji como placeholder */
+  products: [
+    {
+      id: 1,
+      name: "Camiseta GR Classic",
+      category: "Vestuário",
+      price: "R$ 119",
+      oldPrice: "R$ 159",
+      badge: "Mais Vendido",
+      description: "100% algodão penteado 300g. Corte premium, caimento perfeito.",
+      emoji: "👕",
+      imgUrl: ""
+    },
+    {
+      id: 2,
+      name: "Garrafa GR Black 1L",
+      category: "Acessórios",
+      price: "R$ 89",
+      oldPrice: "R$ 129",
+      badge: "Top 1",
+      description: "Aço inox dupla parede. Mantém temperatura por 24h.",
+      emoji: "🍶",
+      imgUrl: ""
+    },
+    {
+      id: 3,
+      name: "Boné GR Snapback",
+      category: "Vestuário",
+      price: "R$ 79",
+      oldPrice: "R$ 109",
+      badge: "Exclusivo",
+      description: "Bordado premium. Fechamento ajustável. One size fits all.",
+      emoji: "🧢",
+      imgUrl: ""
+    },
+    {
+      id: 4,
+      name: "Kit GR Essentials",
+      category: "Kit",
+      price: "R$ 249",
+      oldPrice: "R$ 349",
+      badge: "🔥 Oferta",
+      description: "Camiseta + Garrafa + Boné. O kit completo com desconto exclusivo.",
+      emoji: "🛍️",
+      imgUrl: ""
+    },
+    {
+      id: 5,
+      name: "Camiseta GR Oversize",
+      category: "Vestuário",
+      price: "R$ 139",
+      oldPrice: "R$ 179",
+      badge: "Novo",
+      description: "Corte oversized, caimento relaxado. Estampa exclusiva GR.",
+      emoji: "👕",
+      imgUrl: ""
+    },
+    {
+      id: 6,
+      name: "Garrafa GR Gold 600ml",
+      category: "Acessórios",
+      price: "R$ 99",
+      oldPrice: "R$ 139",
+      badge: "Premium",
+      description: "Edição dourada limitada. Acabamento metalizado exclusivo.",
+      emoji: "✨",
+      imgUrl: ""
+    }
+  ],
+
+  /* --- OFERTA / CTA FINAL --- */
+  offerTitle: "OFERTA POR TEMPO LIMITADO",
+  offerSubtitle: "Só para os primeiros 50 pedidos:",
+  offerItems: [
+    "🎁 Brinde exclusivo GR na sua compra",
+    "🚚 Frete GRÁTIS para todo o Brasil",
+    "💳 Até 12x sem juros no cartão",
+    "🔄 30 dias para troca sem burocracia"
+  ],
+  offerCTA: "GARANTIR MINHA OFERTA AGORA",
+  offerLink: "https://wa.me/5531999999999?text=Quero%20minha%20oferta%20GR%20Store",
+  offerUrgency: "⚠️ Estoque limitado — apenas 23 unidades restantes",
+
+  /* --- WHATSAPP / CONTATO --- */
+  whatsapp: "5531999999999",
+  whatsappMsg: "Olá! Vim da LP e quero saber mais sobre os produtos GR Store.",
+
+  /* --- IMAGEM DA LOGO (GitHub ou base64) --- */
+  /* Cole o link raw da logo aqui. Se vazio, usa texto estilizado */
+  logoUrl: "",
+
+  /* --- IMAGEM DO HERO (opcional, fundo da seção hero) --- */
+  heroImgUrl: ""
+};
+</script>
+<!-- ============================================================
+     FIM DA CONFIGURAÇÃO
+     ============================================================ -->
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08070a;
+  --bg2:#100e14;
+  --bg3:#16131c;
+  --gold:#c9922a;
+  --gold-bright:#f5c842;
+  --gold-light:#fde9a2;
+  --gold-dark:#7a5415;
+  --copper:#b8602a;
+  --cream:#f0e8d8;
+  --muted:#6b5f50;
+  --border:rgba(201,146,42,0.2);
+  --border-bright:rgba(245,200,66,0.5);
+  --font-d:'Cormorant Garamond',serif;
+  --font-u:'Rajdhani',sans-serif;
+  --glow:0 0 40px rgba(197,146,42,0.15);
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:var(--font-u);
+  background:var(--bg);
+  color:var(--cream);
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* GOLD SHIMMER */
+.g{
+  background:linear-gradient(90deg,var(--gold-dark) 0%,var(--gold) 30%,var(--gold-bright) 50%,var(--gold-light) 60%,var(--gold) 80%,var(--gold-dark) 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gs 5s linear infinite;
+}
+@keyframes gs{0%{background-position:0% center}100%{background-position:300% center}}
+
+/* ORNAMENT LINES */
+.ornament{
+  display:flex;align-items:center;gap:16px;
+  font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:14px;
+}
+.ornament::before,.ornament::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.ornament::after{background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  background:rgba(8,7,10,0.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 5%;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+
+.logo-wrap{display:flex;align-items:center;gap:14px}
+.logo-img{height:44px;width:auto}
+.logo-text{
+  font-family:var(--font-d);font-size:22px;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;
+}
+
+nav ul{list-style:none;display:flex;gap:32px;align-items:center}
+nav a{
+  font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color 0.3s;
+}
+nav a:hover{color:var(--gold-bright)}
+.nav-wa{
+  background:transparent;color:var(--gold) !important;
+  border:1px solid var(--border-bright);
+  padding:9px 20px;font-size:11px !important;letter-spacing:2px !important;
+  transition:background 0.3s,color 0.3s !important;
+}
+.nav-wa:hover{background:var(--gold) !important;color:var(--bg) !important}
+
+/* HERO */
+.hero{
+  min-height:100vh;padding:110px 5% 80px;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(201,146,42,0.07),transparent),
+             radial-gradient(ellipse 50% 50% at 20% 80%,rgba(184,96,42,0.05),transparent);
+}
+.hero-bg-img{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+  opacity:0.12;
+}
+.hero-content{position:relative;z-index:2}
+
+.eyebrow{
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:22px;display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:'';width:36px;height:1px;background:var(--gold-bright)}
+
+.hero h1{
+  font-family:var(--font-d);font-size:clamp(60px,7.5vw,108px);
+  font-weight:700;line-height:0.93;letter-spacing:3px;margin-bottom:28px;
+  white-space:pre-line;
+}
+.hero h1 .outline{
+  display:block;
+  -webkit-text-stroke:1.5px var(--gold);
+  -webkit-text-fill-color:transparent;
+}
+
+.hero-p{
+  font-size:16px;font-weight:300;color:var(--muted);
+  line-height:1.9;max-width:440px;margin-bottom:40px;letter-spacing:0.3px;
+}
+
+.btn-main{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:18px 44px;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-bright));
+  background-size:200% auto;
+  color:var(--bg);font-family:var(--font-u);font-size:13px;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;text-decoration:none;
+  border:none;cursor:pointer;
+  transition:background-position 0.5s,transform 0.2s,box-shadow 0.3s;
+  clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);
+}
+.btn-main:hover{
+  background-position:right center;
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(197,146,42,0.4);
+}
+
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:17px 44px;background:transparent;
+  color:var(--cream);font-family:var(--font-u);font-size:13px;font-weight:500;
+  letter-spacing:4px;text-transform:uppercase;text-decoration:none;
+  border:1px solid var(--border);cursor:pointer;
+  transition:border-color 0.3s,color 0.3s;
+  clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* HERO VISUAL */
+.hero-visual{
+  position:relative;z-index:2;height:560px;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-ring{
+  position:absolute;border-radius:50%;border:1px solid var(--border);
+}
+.hr1{width:460px;height:460px;border-style:dashed;opacity:0.35;animation:rot 25s linear infinite}
+.hr2{width:340px;height:340px;opacity:0.25;animation:rot 18s linear infinite reverse}
+.hr3{width:220px;height:220px;border-style:dotted;opacity:0.2;animation:rot 12s linear infinite}
+@keyframes rot{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+.hero-logo-frame{
+  position:relative;z-index:5;
+  width:240px;height:240px;
+  border:1px solid var(--border-bright);
+  display:flex;align-items:center;justify-content:center;
+  animation:float 5s ease-in-out infinite;
+  background:rgba(16,14,20,0.8);
+  box-shadow:var(--glow),inset 0 0 40px rgba(201,146,42,0.05);
+}
+.hero-logo-frame::before,.hero-logo-frame::after{
+  content:'';position:absolute;width:24px;height:24px;
+  border-color:var(--gold-bright);border-style:solid;
+}
+.hero-logo-frame::before{top:-2px;left:-2px;border-width:2px 0 0 2px}
+.hero-logo-frame::after{bottom:-2px;right:-2px;border-width:0 2px 2px 0}
+
+.hero-logo-frame img{max-width:80%;max-height:80%;object-fit:contain;filter:drop-shadow(0 0 20px rgba(197,146,42,0.5))}
+.hero-logo-frame .logo-placeholder{
+  font-family:var(--font-d);font-size:52px;font-weight:700;letter-spacing:4px;text-align:center;
+}
+.hero-logo-frame .logo-placeholder small{display:block;font-size:12px;letter-spacing:5px;color:var(--gold);margin-top:4px}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+.hero-chip{
+  position:absolute;z-index:6;
+  background:var(--bg3);border:1px solid var(--border);
+  padding:14px 18px;text-align:center;
+  animation:float 5s ease-in-out infinite;
+}
+.hc1{bottom:80px;left:-20px;animation-delay:1s}
+.hc2{top:80px;right:-10px;animation-delay:2s}
+.hc3{top:200px;left:-30px;animation-delay:0.5s}
+.chip-icon{font-size:24px;display:block;margin-bottom:5px}
+.chip-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.chip-val{font-family:var(--font-d);font-size:18px;font-weight:600}
+
+/* TICKER */
+.ticker{
+  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:14px 0;background:var(--bg2);
+}
+.ticker-track{display:flex;animation:tick 24s linear infinite;white-space:nowrap}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ti{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:4px;text-transform:uppercase;padding:0 28px;color:var(--gold)}
+.td{color:var(--gold-bright);padding:0 6px}
+
+/* SECTION */
+.sec{padding:100px 5%}
+.sec-dark{background:var(--bg2)}
+.sec-surface{background:var(--bg3)}
+
+.sec-head{text-align:center;margin-bottom:64px}
+.sec-title{font-family:var(--font-d);font-size:clamp(40px,5vw,68px);font-weight:700;letter-spacing:2px;line-height:1;margin-bottom:16px}
+.sec-sub{font-size:16px;font-weight:300;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.8}
+
+/* HOOK */
+.hook-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hook-text{}
+.hook-title{font-family:var(--font-d);font-size:clamp(36px,4vw,58px);font-weight:700;line-height:1.05;margin-bottom:24px}
+.hook-p{font-size:16px;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:32px}
+.hook-items{list-style:none;display:flex;flex-direction:column;gap:14px}
+.hook-items li{font-size:15px;font-weight:500;letter-spacing:1px;color:var(--gold-light);padding-left:4px}
+
+.hook-visual{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hv-card{
+  background:var(--bg);border:1px solid var(--border);padding:28px 20px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  transition:border-color 0.3s;
+}
+.hv-card:hover{border-color:var(--gold)}
+.hv-card.span2{grid-column:1/-1;flex-direction:row;align-items:center;gap:20px;background:linear-gradient(135deg,rgba(201,146,42,0.08),transparent)}
+.hv-icon{font-size:30px}
+.hv-title{font-family:var(--font-d);font-size:18px;font-weight:600;letter-spacing:1px}
+.hv-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* PRODUCTS */
+.products-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+
+.prod-card{
+  background:var(--bg2);border:1px solid var(--border);
+  cursor:pointer;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+  position:relative;overflow:hidden;
+}
+.prod-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,146,42,0.06),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.prod-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:var(--glow)}
+.prod-card:hover::after{opacity:1}
+
+.prod-img{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  background:var(--bg3);position:relative;overflow:hidden;
+}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.prod-card:hover .prod-img img{transform:scale(1.05)}
+.prod-emoji{font-size:80px;transition:transform 0.3s}
+.prod-card:hover .prod-emoji{transform:scale(1.1)}
+
+.prod-badge{
+  position:absolute;top:14px;left:14px;z-index:2;
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 12px;color:var(--bg);
+  background:linear-gradient(90deg,var(--gold-dark),var(--gold-bright));
+}
+
+.prod-info{padding:22px 20px}
+.prod-cat{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.prod-name{font-family:var(--font-d);font-size:21px;font-weight:600;letter-spacing:1px;margin-bottom:8px}
+.prod-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+
+.prod-prices{display:flex;align-items:baseline;gap:10px;margin-bottom:18px}
+.prod-price{
+  font-family:var(--font-d);font-size:28px;font-weight:700;
+  background:linear-gradient(90deg,var(--gold),var(--gold-bright));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.prod-old{font-size:15px;color:var(--muted);text-decoration:line-through}
+
+.prod-cta{
+  width:100%;padding:13px;background:transparent;
+  border:1px solid var(--border);color:var(--gold);
+  font-family:var(--font-u);font-size:11px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;cursor:pointer;
+  transition:background 0.3s,color 0.3s,border-color 0.3s;
+}
+.prod-cta:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review-card{
+  background:var(--bg2);border:1px solid var(--border);padding:28px 24px;
+  position:relative;transition:border-color 0.3s;
+}
+.review-card:hover{border-color:var(--gold)}
+.review-card::before{
+  content:'"';font-family:var(--font-d);font-size:80px;font-weight:700;
+  color:var(--gold);opacity:0.15;position:absolute;top:10px;right:20px;line-height:1;
+}
+.rev-stars{color:var(--gold-bright);font-size:16px;letter-spacing:2px;margin-bottom:14px}
+.rev-text{font-size:14px;font-weight:300;color:var(--cream);line-height:1.8;margin-bottom:18px;font-style:italic}
+.rev-name{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+
+/* OFFER / CTA */
+.offer-section{
+  padding:100px 5%;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(201,146,42,0.08),transparent),var(--bg2);
+}
+.offer-section::before{
+  content:'GR';font-family:var(--font-d);font-size:50vw;font-weight:700;
+  color:rgba(201,146,42,0.025);position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);line-height:1;pointer-events:none;
+}
+
+.offer-inner{
+  position:relative;z-index:2;
+  border:1px solid var(--border-bright);
+  background:rgba(16,14,20,0.9);
+  padding:70px 60px;max-width:900px;margin:0 auto;text-align:center;
+}
+.offer-inner::before,.offer-inner::after{
+  content:'';position:absolute;width:32px;height:32px;
+  border-color:var(--gold-bright);border-style:solid;
+}
+.offer-inner::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.offer-inner::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+
+.offer-title{font-family:var(--font-d);font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:2px;margin-bottom:12px}
+.offer-sub{font-size:18px;color:var(--gold);letter-spacing:2px;margin-bottom:40px}
+.offer-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:44px;text-align:left;max-width:420px;margin-left:auto;margin-right:auto}
+.offer-list li{font-size:16px;font-weight:400;letter-spacing:0.5px;color:var(--cream);padding-left:4px}
+.offer-urgency{
+  display:inline-block;font-size:13px;font-weight:600;letter-spacing:2px;
+  color:var(--gold-bright);border:1px solid rgba(245,200,66,0.3);
+  padding:10px 24px;margin-bottom:32px;animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+
+.offer-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:20px 56px;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-bright));
+  background-size:200% auto;
+  color:var(--bg);font-family:var(--font-u);font-size:14px;font-weight:700;
+  letter-spacing:5px;text-transform:uppercase;text-decoration:none;
+  transition:background-position 0.5s,transform 0.2s,box-shadow 0.3s;
+  clip-path:polygon(16px 0,100% 0,calc(100% - 16px) 100%,0 100%);
+}
+.offer-cta:hover{
+  background-position:right center;
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(197,146,42,0.5);
+}
+
+/* FOOTER */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);padding:60px 5% 40px;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:50px}
+.f-logo{font-family:var(--font-d);font-size:28px;font-weight:700;letter-spacing:5px;margin-bottom:14px}
+.f-tag{font-size:14px;font-weight:300;color:var(--muted);line-height:1.8;max-width:260px}
+.f-col-title{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.f-col a{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.3s}
+.f-col a:hover{color:var(--gold-bright)}
+.f-bottom{border-top:1px solid var(--border);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.f-bottom p{font-size:12px;color:var(--muted);letter-spacing:1px}
+
+/* WHATSAPP FAB */
+.wa-fab{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#128C7E,#25D366);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);
+  transition:transform 0.3s,box-shadow 0.3s;animation:float 3s ease-in-out infinite;
+}
+.wa-fab:hover{transform:scale(1.12);box-shadow:0 8px 30px rgba(37,211,102,0.6)}
+.wa-fab svg{width:30px;height:30px;fill:#fff}
+
+/* ADMIN PANEL */
+#admin-btn{
+  position:fixed;bottom:28px;left:28px;z-index:999;
+  background:rgba(16,14,20,0.9);border:1px solid var(--border);
+  color:var(--muted);font-family:var(--font-u);font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:10px 14px;cursor:pointer;transition:color 0.3s,border-color 0.3s;
+}
+#admin-btn:hover{color:var(--gold);border-color:var(--gold)}
+
+#admin-overlay{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(4,3,6,0.95);backdrop-filter:blur(10px);
+  overflow-y:auto;padding:40px 5%;
+}
+#admin-overlay.open{display:block}
+
+.admin-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:40px;border-bottom:1px solid var(--border);padding-bottom:24px;
+}
+.admin-header h2{font-family:var(--font-d);font-size:32px;font-weight:700;letter-spacing:3px}
+#admin-close{
+  background:transparent;border:1px solid var(--border);color:var(--muted);
+  padding:10px 20px;font-family:var(--font-u);font-size:11px;letter-spacing:2px;cursor:pointer;
+  transition:color 0.3s,border-color 0.3s;
+}
+#admin-close:hover{color:var(--gold);border-color:var(--gold)}
+
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.admin-section{background:var(--bg2);border:1px solid var(--border);padding:28px}
+.admin-section h3{
+  font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:2px;
+  color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);
+}
+.admin-field{margin-bottom:16px}
+.admin-field label{display:block;font-size:11px;letter-spacing:2px;color:var(--muted);margin-bottom:6px;text-transform:uppercase}
+.admin-field input,.admin-field textarea{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  color:var(--cream);font-family:var(--font-u);font-size:14px;
+  padding:10px 14px;outline:none;transition:border-color 0.3s;resize:vertical;
+}
+.admin-field input:focus,.admin-field textarea:focus{border-color:var(--gold)}
+.admin-field small{display:block;font-size:11px;color:var(--muted);margin-top:5px}
+
+.admin-save{
+  margin-top:32px;
+  width:100%;padding:16px;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold-bright));
+  color:var(--bg);font-family:var(--font-u);font-size:12px;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;
+  transition:opacity 0.3s;
+}
+.admin-save:hover{opacity:0.85}
+
+/* FADE IN SCROLL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:100px}
+  .hero-visual{display:none}
+  .hook-grid,.admin-grid{grid-template-columns:1fr}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  nav ul{display:none}
+  .offer-inner{padding:40px 24px}
+}
+@media(max-width:500px){
+  .products-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP FAB -->
+<a class="wa-fab" id="wa-link" href="#" target="_blank" rel="noopener" title="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ADMIN BTN -->
+<button id="admin-btn" onclick="openAdmin()">⚙ Admin</button>
+
+<!-- ADMIN PANEL -->
+<div id="admin-overlay">
+  <div class="admin-header">
+    <h2 class="g">PAINEL ADMIN — GR STORE</h2>
+    <button id="admin-close" onclick="closeAdmin()">✕ Fechar</button>
+  </div>
+  <div id="admin-content"></div>
+  <button class="admin-save" onclick="saveAdmin()">SALVAR ALTERAÇÕES E RECARREGAR</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <img id="nav-logo-img" class="logo-img" src="" alt="GR Store" style="display:none">
+    <div class="logo-text g" id="nav-logo-text">GR STORE</div>
+  </div>
+  <ul>
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a id="nav-wa" href="#" target="_blank" class="nav-wa">WhatsApp</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-img" id="hero-bg-img"></div>
+  <div class="hero-content">
+    <p class="eyebrow" id="hero-eyebrow-el"></p>
+    <h1 id="hero-h1"><span class="g" id="hero-title-el"></span></h1>
+    <p class="hero-p" id="hero-p-el"></p>
+    <div class="hero-btns">
+      <a class="btn-main" id="hero-cta-el" href="#produtos">▶ VER PRODUTOS</a>
+      <a class="btn-ghost" id="hero-wa-el" href="#" target="_blank">FALAR NO WHATSAPP</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-ring hr1"></div>
+    <div class="hero-ring hr2"></div>
+    <div class="hero-ring hr3"></div>
+    <div class="hero-logo-frame">
+      <img id="hero-logo-img" src="" alt="GR Store" style="display:none">
+      <div class="logo-placeholder g" id="hero-logo-placeholder">GR<small>STORE</small></div>
+    </div>
+    <div class="hero-chip hc1 reveal d1">
+      <span class="chip-icon">🚚</span>
+      <span class="chip-label">Frete</span>
+      <span class="chip-val">Grátis</span>
+    </div>
+    <div class="hero-chip hc2 reveal d2">
+      <span class="chip-icon">🏅</span>
+      <span class="chip-label">Qualidade</span>
+      <span class="chip-val">Premium</span>
+    </div>
+    <div class="hero-chip hc3 reveal d3">
+      <span class="chip-icon">🔄</span>
+      <span class="chip-label">Troca</span>
+      <span class="chip-val">30 dias</span>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker-el"></div>
+</div>
+
+<!-- HOOK / PROBLEMA -->
+<section class="sec sec-dark" id="sobre">
+  <div class="hook-grid">
+    <div class="hook-text reveal">
+      <div class="ornament">Nossa proposta</div>
+      <h2 class="hook-title" id="hook-title-el"></h2>
+      <p class="hook-p" id="hook-p-el"></p>
+      <ul class="hook-items" id="hook-items-el"></ul>
+    </div>
+    <div class="hook-visual reveal d2">
+      <div class="hv-card">
+        <span class="hv-icon">⚡</span>
+        <div class="hv-title">Entrega em até 24h</div>
+        <div class="hv-desc">Separamos e enviamos seu pedido no mesmo dia</div>
+      </div>
+      <div class="hv-card">
+        <span class="hv-icon">🏅</span>
+        <div class="hv-title">Material Premium</div>
+        <div class="hv-desc">Selecionamos os melhores tecidos e insumos</div>
+      </div>
+      <div class="hv-card">
+        <span class="hv-icon">🔒</span>
+        <div class="hv-title">Compra Segura</div>
+        <div class="hv-desc">Pix, cartão e boleto com total proteção</div>
+      </div>
+      <div class="hv-card">
+        <span class="hv-icon">🎁</span>
+        <div class="hv-title">Brinde Exclusivo</div>
+        <div class="hv-desc">Surpresa especial em cada pedido GR Store</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="sec" id="produtos">
+  <div class="sec-head reveal">
+    <div class="ornament">Coleção 2025</div>
+    <h2 class="sec-title"><span class="g">NOSSOS</span> PRODUTOS</h2>
+    <p class="sec-sub">Cada peça foi pensada para quem não aceita o comum. Qualidade que você vê, sente e usa por anos.</p>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="sec sec-surface" id="depoimentos">
+  <div class="sec-head reveal">
+    <div class="ornament">Clientes reais</div>
+    <h2 class="sec-title">O QUE DIZEM <span class="g">SOBRE NÓS</span></h2>
+    <p class="sec-sub">Mais de 2.000 clientes satisfeitos. Estas são apenas algumas histórias.</p>
+  </div>
+  <div class="reviews-grid" id="reviews-grid"></div>
+</section>
+
+<!-- OFERTA / CTA -->
+<section class="offer-section">
+  <div class="offer-inner reveal">
+    <div class="ornament">Exclusivo</div>
+    <h2 class="offer-title g" id="offer-title-el"></h2>
+    <p class="offer-sub" id="offer-sub-el"></p>
+    <ul class="offer-list" id="offer-list-el"></ul>
+    <div class="offer-urgency" id="offer-urgency-el"></div>
+    <br><br>
+    <a class="offer-cta" id="offer-cta-el" href="#" target="_blank">▶ GARANTIR OFERTA</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo g">GR STORE</div>
+      <p class="f-tag">Estilo com identidade. Cada peça conta uma história — a sua.</p>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Navegação</div>
+      <ul>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Contato</div>
+      <ul>
+        <li><a id="footer-wa" href="#" target="_blank">WhatsApp</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Política de troca</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <p>© 2025 GR Store — Todos os direitos reservados</p>
+    <p>Feito com ✦ e identidade</p>
+  </div>
+</footer>
+
+<script>
+/* ===================== RENDER ENGINE ===================== */
+
+let cfg = JSON.parse(localStorage.getItem('gr_config') || 'null') || CONFIG;
+
+function wa(msg){return `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(msg||cfg.whatsappMsg)}`}
+
+function render(){
+  /* NAV LOGO */
+  if(cfg.logoUrl){
+    document.getElementById('nav-logo-img').src = cfg.logoUrl;
+    document.getElementById('nav-logo-img').style.display = 'block';
+    document.getElementById('nav-logo-text').style.display = 'none';
+  }
+
+  /* HERO */
+  document.getElementById('hero-eyebrow-el').textContent = cfg.heroEyebrow;
+  const titleLines = cfg.heroTitle.split('\n');
+  document.getElementById('hero-h1').innerHTML = titleLines.map((l,i)=>
+    i===1 ? `<span class="outline">${l}</span>` : `<span class="g">${l}</span>`
+  ).join('');
+  document.getElementById('hero-p-el').textContent = cfg.heroSubtitle;
+  const heroCta = document.getElementById('hero-cta-el');
+  heroCta.textContent = '▶ ' + cfg.heroCTA;
+  heroCta.href = cfg.heroAnchor || '#produtos';
+  document.getElementById('hero-wa-el').href = wa();
+  document.getElementById('nav-wa').href = wa();
+
+  /* HERO LOGO FRAME */
+  if(cfg.logoUrl){
+    document.getElementById('hero-logo-img').src = cfg.logoUrl;
+    document.getElementById('hero-logo-img').style.display = 'block';
+    document.getElementById('hero-logo-placeholder').style.display = 'none';
+  }
+
+  /* HERO BG */
+  if(cfg.heroImgUrl){
+    document.getElementById('hero-bg-img').style.backgroundImage = `url(${cfg.heroImgUrl})`;
+  }
+
+  /* TICKER */
+  const items = ['GR Store','Nova Coleção','Frete Grátis acima de R$199','Camisetas Premium','Bonés Exclusivos','Garrafas Personalizadas','Estilo Autêntico'];
+  const double = [...items,...items];
+  document.getElementById('ticker-el').innerHTML = double.map(i=>`<span class="ti">${i}</span><span class="td">✦</span>`).join('');
+
+  /* HOOK */
+  document.getElementById('hook-title-el').textContent = cfg.hookTitle;
+  document.getElementById('hook-p-el').textContent = cfg.hookText;
+  document.getElementById('hook-items-el').innerHTML = cfg.hookItems.map(i=>`<li>${i}</li>`).join('');
+
+  /* PRODUCTS */
+  document.getElementById('products-grid').innerHTML = cfg.products.map(p=>`
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        ${p.imgUrl
+          ? `<img src="${p.imgUrl}" alt="${p.name}" loading="lazy">`
+          : `<span class="prod-emoji">${p.emoji}</span>`
+        }
+        <span class="prod-badge">${p.badge}</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">${p.category}</div>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-desc">${p.description}</div>
+        <div class="prod-prices">
+          <span class="prod-price">${p.price}</span>
+          ${p.oldPrice ? `<span class="prod-old">${p.oldPrice}</span>` : ''}
+        </div>
+        <button class="prod-cta" onclick="window.open('${wa('Olá! Tenho interesse no produto: ' + p.name + ' (' + p.price + '). Poderia me passar mais informações?')}','_blank')">
+          Quero este produto →
+        </button>
+      </div>
+    </div>
+  `).join('');
+
+  /* REVIEWS */
+  document.getElementById('reviews-grid').innerHTML = cfg.reviews.map(r=>`
+    <div class="review-card reveal">
+      <div class="rev-stars">${'★'.repeat(r.stars)}</div>
+      <p class="rev-text">${r.text}</p>
+      <div class="rev-name">${r.name}</div>
+    </div>
+  `).join('');
+
+  /* OFFER */
+  document.getElementById('offer-title-el').textContent = cfg.offerTitle;
+  document.getElementById('offer-sub-el').textContent = cfg.offerSubtitle;
+  document.getElementById('offer-list-el').innerHTML = cfg.offerItems.map(i=>`<li>${i}</li>`).join('');
+  document.getElementById('offer-urgency-el').textContent = cfg.offerUrgency;
+  const offerCta = document.getElementById('offer-cta-el');
+  offerCta.textContent = '▶ ' + cfg.offerCTA;
+  offerCta.href = cfg.offerLink || wa(cfg.offerCTA);
+
+  /* WA FAB & FOOTER */
+  document.getElementById('wa-link').href = wa();
+  document.getElementById('footer-wa').href = wa();
+
+  /* SCROLL REVEAL */
+  setTimeout(initReveal, 100);
+}
+
+/* ===================== SCROLL REVEAL ===================== */
+function initReveal(){
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+  },{threshold:0.1});
+  els.forEach(el=>obs.observe(el));
+}
+
+/* ===================== ADMIN PANEL ===================== */
+let adminUnlocked = false;
+
+function openAdmin(){
+  if(!adminUnlocked){
+    const pw = prompt('🔐 Senha do painel admin:');
+    if(pw !== cfg.adminPassword && pw !== CONFIG.adminPassword){
+      alert('Senha incorreta.');return;
+    }
+    adminUnlocked = true;
+  }
+  buildAdminUI();
+  document.getElementById('admin-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAdmin(){
+  document.getElementById('admin-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function buildAdminUI(){
+  const c = document.getElementById('admin-content');
+  c.innerHTML = `
+  <div class="admin-grid">
+    <div class="admin-section">
+      <h3>🖼 Imagens (links GitHub raw)</h3>
+      <div class="admin-field">
+        <label>URL da Logo</label>
+        <input id="a-logoUrl" value="${cfg.logoUrl}" placeholder="https://raw.githubusercontent.com/...">
+        <small>Cole o link raw da imagem no GitHub</small>
+      </div>
+      <div class="admin-field">
+        <label>Imagem de Fundo do Hero (opcional)</label>
+        <input id="a-heroImgUrl" value="${cfg.heroImgUrl}" placeholder="https://raw.githubusercontent.com/...">
+      </div>
+      <h3 style="margin-top:24px">💬 Textos do Hero</h3>
+      <div class="admin-field">
+        <label>Frase pequena (eyebrow)</label>
+        <input id="a-heroEyebrow" value="${cfg.heroEyebrow}">
+      </div>
+      <div class="admin-field">
+        <label>Título principal (use \\n para quebra de linha)</label>
+        <input id="a-heroTitle" value="${cfg.heroTitle.replace(/\n/g,'\\n')}">
+      </div>
+      <div class="admin-field">
+        <label>Subtítulo</label>
+        <textarea id="a-heroSubtitle" rows="3">${cfg.heroSubtitle}</textarea>
+      </div>
+      <div class="admin-field">
+        <label>Texto do botão CTA</label>
+        <input id="a-heroCTA" value="${cfg.heroCTA}">
+      </div>
+    </div>
+    <div class="admin-section">
+      <h3>🎯 Seção Gancho</h3>
+      <div class="admin-field">
+        <label>Título do gancho</label>
+        <input id="a-hookTitle" value="${cfg.hookTitle}">
+      </div>
+      <div class="admin-field">
+        <label>Texto explicativo</label>
+        <textarea id="a-hookText" rows="3">${cfg.hookText}</textarea>
+      </div>
+      <div class="admin-field">
+        <label>Itens (1 por linha)</label>
+        <textarea id="a-hookItems" rows="4">${cfg.hookItems.join('\n')}</textarea>
+      </div>
+      <h3 style="margin-top:24px">🎁 Oferta Final / CTA</h3>
+      <div class="admin-field">
+        <label>Título da oferta</label>
+        <input id="a-offerTitle" value="${cfg.offerTitle}">
+      </div>
+      <div class="admin-field">
+        <label>Subtítulo da oferta</label>
+        <input id="a-offerSubtitle" value="${cfg.offerSubtitle}">
+      </div>
+      <div class="admin-field">
+        <label>Itens da oferta (1 por linha)</label>
+        <textarea id="a-offerItems" rows="5">${cfg.offerItems.join('\n')}</textarea>
+      </div>
+      <div class="admin-field">
+        <label>Urgência (texto do aviso)</label>
+        <input id="a-offerUrgency" value="${cfg.offerUrgency}">
+      </div>
+      <div class="admin-field">
+        <label>Texto do botão oferta</label>
+        <input id="a-offerCTA" value="${cfg.offerCTA}">
+      </div>
+      <div class="admin-field">
+        <label>Link do botão oferta (URL ou WhatsApp)</label>
+        <input id="a-offerLink" value="${cfg.offerLink}">
+      </div>
+    </div>
+    <div class="admin-section" style="grid-column:1/-1">
+      <h3>📦 Produtos (imagens via GitHub raw URL)</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" id="a-products-grid">
+        ${cfg.products.map((p,i)=>`
+          <div style="background:var(--bg);border:1px solid var(--border);padding:16px">
+            <div style="font-size:11px;letter-spacing:2px;color:var(--gold);margin-bottom:10px">PRODUTO ${i+1}</div>
+            <div class="admin-field"><label>Nome</label><input data-pi="${i}" data-pf="name" value="${p.name}"></div>
+            <div class="admin-field"><label>Categoria</label><input data-pi="${i}" data-pf="category" value="${p.category}"></div>
+            <div class="admin-field"><label>Preço</label><input data-pi="${i}" data-pf="price" value="${p.price}"></div>
+            <div class="admin-field"><label>Preço antigo</label><input data-pi="${i}" data-pf="oldPrice" value="${p.oldPrice}"></div>
+            <div class="admin-field"><label>Badge</label><input data-pi="${i}" data-pf="badge" value="${p.badge}"></div>
+            <div class="admin-field"><label>Descrição</label><textarea data-pi="${i}" data-pf="description" rows="2">${p.description}</textarea></div>
+            <div class="admin-field"><label>URL da imagem (GitHub raw)</label><input data-pi="${i}" data-pf="imgUrl" value="${p.imgUrl}" placeholder="https://raw.githubusercontent.com/..."></div>
+            <div class="admin-field"><label>Emoji (se sem imagem)</label><input data-pi="${i}" data-pf="emoji" value="${p.emoji}"></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    <div class="admin-section" style="grid-column:1/-1">
+      <h3>⭐ Depoimentos</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        ${cfg.reviews.map((r,i)=>`
+          <div style="background:var(--bg);border:1px solid var(--border);padding:16px">
+            <div class="admin-field"><label>Nome</label><input data-ri="${i}" data-rf="name" value="${r.name}"></div>
+            <div class="admin-field"><label>Estrelas (1-5)</label><input type="number" min="1" max="5" data-ri="${i}" data-rf="stars" value="${r.stars}"></div>
+            <div class="admin-field"><label>Depoimento</label><textarea data-ri="${i}" data-rf="text" rows="3">${r.text}</textarea></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    <div class="admin-section">
+      <h3>📱 WhatsApp & Contato</h3>
+      <div class="admin-field">
+        <label>Número do WhatsApp (com DDI)</label>
+        <input id="a-whatsapp" value="${cfg.whatsapp}" placeholder="5531999999999">
+        <small>Ex: 5531999999999 (sem espaços ou símbolos)</small>
+      </div>
+      <div class="admin-field">
+        <label>Mensagem padrão do WhatsApp</label>
+        <textarea id="a-whatsappMsg" rows="2">${cfg.whatsappMsg}</textarea>
+      </div>
+    </div>
+    <div class="admin-section">
+      <h3>🔐 Segurança</h3>
+      <div class="admin-field">
+        <label>Senha do painel admin</label>
+        <input id="a-adminPassword" type="password" value="${cfg.adminPassword}">
+        <small>⚠️ Guarde em lugar seguro após alterar</small>
+      </div>
+    </div>
+  </div>`;
+}
+
+function saveAdmin(){
+  const newCfg = {...cfg};
+  /* Textos */
+  newCfg.logoUrl = document.getElementById('a-logoUrl').value;
+  newCfg.heroImgUrl = document.getElementById('a-heroImgUrl').value;
+  newCfg.heroEyebrow = document.getElementById('a-heroEyebrow').value;
+  newCfg.heroTitle = document.getElementById('a-heroTitle').value.replace(/\\n/g,'\n');
+  newCfg.heroSubtitle = document.getElementById('a-heroSubtitle').value;
+  newCfg.heroCTA = document.getElementById('a-heroCTA').value;
+  newCfg.hookTitle = document.getElementById('a-hookTitle').value;
+  newCfg.hookText = document.getElementById('a-hookText').value;
+  newCfg.hookItems = document.getElementById('a-hookItems').value.split('\n').filter(l=>l.trim());
+  newCfg.offerTitle = document.getElementById('a-offerTitle').value;
+  newCfg.offerSubtitle = document.getElementById('a-offerSubtitle').value;
+  newCfg.offerItems = document.getElementById('a-offerItems').value.split('\n').filter(l=>l.trim());
+  newCfg.offerUrgency = document.getElementById('a-offerUrgency').value;
+  newCfg.offerCTA = document.getElementById('a-offerCTA').value;
+  newCfg.offerLink = document.getElementById('a-offerLink').value;
+  newCfg.whatsapp = document.getElementById('a-whatsapp').value;
+  newCfg.whatsappMsg = document.getElementById('a-whatsappMsg').value;
+  newCfg.adminPassword = document.getElementById('a-adminPassword').value;
+
+  /* Produtos */
+  document.querySelectorAll('[data-pi]').forEach(el=>{
+    const i = parseInt(el.dataset.pi);
+    const f = el.dataset.pf;
+    newCfg.products[i][f] = f === 'stars' ? parseInt(el.value) : el.value;
+  });
+
+  /* Reviews */
+  document.querySelectorAll('[data-ri]').forEach(el=>{
+    const i = parseInt(el.dataset.ri);
+    const f = el.dataset.rf;
+    newCfg.reviews[i][f] = f === 'stars' ? parseInt(el.value) : el.value;
+  });
+
+  cfg = newCfg;
+  localStorage.setItem('gr_config', JSON.stringify(cfg));
+  closeAdmin();
+  render();
+  alert('✅ Alterações salvas com sucesso!');
+}
+
+/* ===================== INIT ===================== */
+render();
+</script>
+</body>
+</html>
