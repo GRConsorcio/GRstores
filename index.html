@@ -931,7 +931,7 @@ function render(){
           <span class="prod-price">${p.price}</span>
           ${p.oldPrice ? `<span class="prod-old">${p.oldPrice}</span>` : ''}
         </div>
-        <button class="prod-cta" onclick="window.open('${wa('Olá! Tenho interesse no produto: ' + p.name + ' (' + p.price + '). Poderia me passar mais informações?')}','_blank')">
+        <button class="prod-cta" onclick="window.open('${wa('Quero comprar ' + p.name)}','_blank')">
           Quero este produto →
         </button>
       </div>
