@@ -4,6 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GR Store — Vestuário & Acessórios Premium</title>
+
+<!-- ============================================================
+     CABEÇALHOS DE SEGURANÇA (HTTP Security Headers via meta)
+     Obs: Para proteção máxima, configure estes headers também
+     no servidor (Apache/Nginx/Vercel/etc.)
+     ============================================================ -->
+<!-- Impede que a página seja embutida em iframes (proteção contra clickjacking) -->
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<!-- Força o browser a não interpretar arquivos com tipo MIME diferente do declarado -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<!-- Controla como a URL de origem é enviada em requests (não vaza URL completa para externos) -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Content Security Policy: define fontes confiáveis de conteúdo -->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: https://raw.githubusercontent.com https://avatars.githubusercontent.com;
+  connect-src 'self' https://wa.me;
+  frame-ancestors 'self';
+  base-uri 'self';
+  form-action 'self';
+">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- ============================================================
@@ -14,8 +38,12 @@
 <script>
 const CONFIG = {
 
-  /* --- SENHA DO PAINEL ADMIN --- */
-  adminPassword: "GR2025@admin",
+  /* --- HASH SHA-256 DA SENHA DO PAINEL ADMIN --- */
+  /* A senha original ("GR2025@admin") é armazenada somente como hash.
+     Para gerar um novo hash: https://emn178.github.io/online-tools/sha256.html
+     ou no terminal: echo -n "SuaSenha" | sha256sum
+     Hash atual corresponde à senha: GR2025@admin */
+  adminPasswordHash: "cec6114423a8e17b8017f1220db832592024cf36308e4b8a7ce90d68313bb864",
 
   /* --- TEXTOS PRINCIPAIS --- */
   heroEyebrow: "Coleção Exclusiva · 2026",
@@ -729,7 +757,7 @@ footer{
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#depoimentos">Depoimentos</a></li>
     <li><a href="https://www.instagram.com/gr_consorcio_br/" target="_blank" rel="noopener" style="color:var(--muted);font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:color 0.3s" onmouseover="this.style.color='var(--gold-bright)'" onmouseout="this.style.color='var(--muted)'">Instagram</a></li>
-    <li><a id="nav-wa" href="#" target="_blank" class="nav-wa">WhatsApp</a></li>
+    <li><a id="nav-wa" href="#" target="_blank" rel="noopener noreferrer" class="nav-wa">WhatsApp</a></li>
   </ul>
 </nav>
 
@@ -743,7 +771,7 @@ footer{
     <p class="hero-p" id="hero-p-el"></p>
     <div class="hero-btns">
       <a class="btn-main" id="hero-cta-el" href="#produtos">▶ VER PRODUTOS</a>
-      <a class="btn-ghost" id="hero-wa-el" href="#" target="_blank">FALAR NO WHATSAPP</a>
+      <a class="btn-ghost" id="hero-wa-el" href="#" target="_blank" rel="noopener noreferrer">FALAR NO WHATSAPP</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -840,7 +868,7 @@ footer{
     <ul class="offer-list" id="offer-list-el"></ul>
     <div class="offer-urgency" id="offer-urgency-el"></div>
     <br><br>
-    <a class="offer-cta" id="offer-cta-el" href="#" target="_blank">▶ GARANTIR OFERTA</a>
+    <a class="offer-cta" id="offer-cta-el" href="#" target="_blank" rel="noopener noreferrer">▶ GARANTIR OFERTA</a>
   </div>
 </section>
 
@@ -929,20 +957,20 @@ function render(){
     <div class="prod-card reveal">
       <div class="prod-img">
         ${p.imgUrl
-          ? `<img src="${p.imgUrl}" alt="${p.name}" loading="lazy">`
-          : `<span class="prod-emoji">${p.emoji}</span>`
+          ? `<img src="${sanitize(p.imgUrl)}" alt="${sanitize(p.name)}" loading="lazy">`
+          : `<span class="prod-emoji">${sanitize(p.emoji)}</span>`
         }
-        <span class="prod-badge">${p.badge}</span>
+        <span class="prod-badge">${sanitize(p.badge)}</span>
       </div>
       <div class="prod-info">
-        <div class="prod-cat">${p.category}</div>
-        <div class="prod-name">${p.name}</div>
-        <div class="prod-desc">${p.description}</div>
+        <div class="prod-cat">${sanitize(p.category)}</div>
+        <div class="prod-name">${sanitize(p.name)}</div>
+        <div class="prod-desc">${sanitize(p.description)}</div>
         <div class="prod-prices">
-          <span class="prod-price">${p.price}</span>
-          ${p.oldPrice ? `<span class="prod-old">${p.oldPrice}</span>` : ''}
+          <span class="prod-price">${sanitize(p.price)}</span>
+          ${p.oldPrice ? `<span class="prod-old">${sanitize(p.oldPrice)}</span>` : ''}
         </div>
-        <button class="prod-cta" onclick="window.open('${wa('Quero comprar ' + p.name)}','_blank')">
+        <button class="prod-cta" onclick="window.open('${sanitize(wa('Quero comprar ' + p.name))}','_blank','noopener,noreferrer')">
           Quero este produto →
         </button>
       </div>
@@ -952,9 +980,9 @@ function render(){
   /* REVIEWS */
   document.getElementById('reviews-grid').innerHTML = cfg.reviews.map(r=>`
     <div class="review-card reveal">
-      <div class="rev-stars">${'★'.repeat(r.stars)}</div>
-      <p class="rev-text">${r.text}</p>
-      <div class="rev-name">${r.name}</div>
+      <div class="rev-stars">${'★'.repeat(Math.min(5,Math.max(1,parseInt(r.stars)||5)))}</div>
+      <p class="rev-text">${sanitize(r.text)}</p>
+      <div class="rev-name">${sanitize(r.name)}</div>
     </div>
   `).join('');
 
@@ -986,13 +1014,49 @@ function initReveal(){
 
 /* ===================== ADMIN PANEL ===================== */
 let adminUnlocked = false;
+let adminLoginAttempts = 0;
+const ADMIN_MAX_ATTEMPTS = 5;
+let adminLockUntil = 0;
 
-function openAdmin(){
+/* Gera hash SHA-256 de uma string usando a Web Crypto API nativa do browser */
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+/* Sanitiza texto para evitar XSS ao inserir conteúdo em HTML */
+function sanitize(str) {
+  const div = document.createElement('div');
+  div.appendChild(document.createTextNode(String(str || '')));
+  return div.innerHTML;
+}
+
+async function openAdmin(){
   if(!adminUnlocked){
-    const pw = prompt('🔐 Senha do painel admin:');
-    if(pw !== cfg.adminPassword && pw !== CONFIG.adminPassword){
-      alert('Senha incorreta.');return;
+    const now = Date.now();
+    if(adminLockUntil > now){
+      const secsLeft = Math.ceil((adminLockUntil - now) / 1000);
+      alert(`🔒 Muitas tentativas. Aguarde ${secsLeft} segundos.`);
+      return;
     }
+    const pw = prompt('🔐 Senha do painel admin:');
+    if(!pw) return;
+    const hash = await sha256(pw);
+    const storedHash = cfg.adminPasswordHash || CONFIG.adminPasswordHash;
+    if(hash !== storedHash){
+      adminLoginAttempts++;
+      if(adminLoginAttempts >= ADMIN_MAX_ATTEMPTS){
+        adminLockUntil = Date.now() + 60000; // bloqueia por 60s
+        adminLoginAttempts = 0;
+        alert('🔒 Muitas tentativas incorretas. Painel bloqueado por 60 segundos.');
+      } else {
+        alert(`Senha incorreta. (${ADMIN_MAX_ATTEMPTS - adminLoginAttempts} tentativas restantes)`);
+      }
+      return;
+    }
+    adminLoginAttempts = 0;
     adminUnlocked = true;
   }
   buildAdminUI();
@@ -1131,7 +1195,7 @@ function buildAdminUI(){
   </div>`;
 }
 
-function saveAdmin(){
+async function saveAdmin(){
   const newCfg = {...cfg};
   /* Textos */
   newCfg.logoUrl = document.getElementById('a-logoUrl').value;
@@ -1151,7 +1215,14 @@ function saveAdmin(){
   newCfg.offerLink = document.getElementById('a-offerLink').value;
   newCfg.whatsapp = document.getElementById('a-whatsapp').value;
   newCfg.whatsappMsg = document.getElementById('a-whatsappMsg').value;
-  newCfg.adminPassword = document.getElementById('a-adminPassword').value;
+  const newRawPassword = document.getElementById('a-adminPassword').value;
+  if(newRawPassword) {
+    newCfg.adminPasswordHash = await sha256(newRawPassword);
+  } else {
+    newCfg.adminPasswordHash = cfg.adminPasswordHash;
+  }
+  // Nunca salva a senha em texto puro
+  delete newCfg.adminPassword;
 
   /* Produtos */
   document.querySelectorAll('[data-pi]').forEach(el=>{
