@@ -576,59 +576,103 @@ nav a:hover{color:var(--gold-bright)}
 
 /* PRODUCTS */
 .products-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  border:1px solid var(--border);
 }
 
 .prod-card{
-  background:var(--bg2);border:1px solid var(--border);
-  cursor:pointer;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+  background:var(--bg2);
+  cursor:default;transition:background 0.25s;
   position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
 }
-.prod-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(201,146,42,0.06),transparent);
-  opacity:0;transition:opacity 0.3s;
-}
-.prod-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:var(--glow)}
-.prod-card:hover::after{opacity:1}
+.prod-card:hover{background:var(--bg3)}
 
 .prod-img{
-  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
   background:var(--bg3);position:relative;overflow:hidden;
 }
-.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
-.prod-card:hover .prod-img img{transform:scale(1.05)}
-.prod-emoji{font-size:80px;transition:transform 0.3s}
-.prod-card:hover .prod-emoji{transform:scale(1.1)}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(.25,.46,.45,.94)}
+.prod-card:hover .prod-img img{transform:scale(1.04)}
+.prod-emoji{font-size:72px}
 
 .prod-badge{
-  position:absolute;top:14px;left:14px;z-index:2;
-  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  padding:5px 12px;color:var(--bg);
-  background:linear-gradient(90deg,var(--gold-dark),var(--gold-bright));
+  position:absolute;top:12px;left:0;z-index:2;
+  font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  padding:4px 10px;color:var(--bg);
+  background:var(--gold);
 }
 
-.prod-info{padding:22px 20px}
-.prod-cat{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.prod-name{font-family:var(--font-d);font-size:21px;font-weight:600;letter-spacing:1px;margin-bottom:8px}
-.prod-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+/* Quick-action overlay on image */
+.prod-actions-overlay{
+  position:absolute;inset:0;
+  display:flex;align-items:flex-end;justify-content:stretch;
+  opacity:0;transition:opacity 0.22s;
+  background:linear-gradient(to top,rgba(8,7,10,0.7) 0%,transparent 55%);
+}
+.prod-card:hover .prod-actions-overlay{opacity:1}
+.prod-overlay-btns{
+  width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.pob-cart,.pob-buy{
+  padding:14px 0;border:none;cursor:pointer;
+  font-family:var(--font-u);font-size:9px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:background 0.18s,color 0.18s;
+}
+.pob-cart{
+  background:rgba(16,14,20,0.88);color:var(--gold);
+  border-right:1px solid rgba(201,146,42,0.25);
+}
+.pob-cart:hover{background:rgba(201,146,42,0.18);color:var(--gold-bright)}
+.pob-buy{
+  background:var(--gold);color:var(--bg);
+}
+.pob-buy:hover{background:var(--gold-bright)}
+.pob-icon{width:14px;height:14px;flex-shrink:0;fill:currentColor}
 
-.prod-prices{display:flex;align-items:baseline;gap:10px;margin-bottom:18px}
+.prod-info{padding:18px 16px 20px;flex:1;display:flex;flex-direction:column}
+.prod-cat{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;opacity:0.8}
+.prod-name{font-family:var(--font-d);font-size:18px;font-weight:600;letter-spacing:0.5px;margin-bottom:6px;line-height:1.2}
+.prod-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:auto;padding-bottom:14px}
+
+.prod-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
+.prod-prices{display:flex;align-items:baseline;gap:8px}
 .prod-price{
-  font-family:var(--font-d);font-size:28px;font-weight:700;
+  font-family:var(--font-d);font-size:22px;font-weight:700;
   background:linear-gradient(90deg,var(--gold),var(--gold-bright));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.prod-old{font-size:15px;color:var(--muted);text-decoration:line-through}
+.prod-old{font-size:12px;color:var(--muted);text-decoration:line-through}
 
-.prod-cta{
-  width:100%;padding:13px;background:transparent;
-  border:1px solid var(--border);color:var(--gold);
-  font-family:var(--font-u);font-size:11px;font-weight:600;
-  letter-spacing:3px;text-transform:uppercase;cursor:pointer;
-  transition:background 0.3s,color 0.3s,border-color 0.3s;
+/* Mobile tap button (shown instead of hover overlay on touch) */
+.prod-cta-mobile{
+  display:none;
+  width:100%;padding:11px;background:transparent;
+  border:none;border-top:1px solid var(--border);color:var(--gold);
+  font-family:var(--font-u);font-size:10px;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;
+  transition:background 0.2s,color 0.2s;
 }
-.prod-cta:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.prod-cta-mobile:hover{background:rgba(201,146,42,0.1)}
+
+/* Cart icon button on card footer */
+.prod-cart-btn{
+  width:34px;height:34px;border:1px solid var(--border);
+  background:transparent;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:border-color 0.2s,background 0.2s;flex-shrink:0;
+}
+.prod-cart-btn:hover{border-color:var(--gold);background:rgba(201,146,42,0.08)}
+.prod-cart-btn svg{width:15px;height:15px;fill:var(--gold)}
+
+@media(max-width:860px){
+  .prod-actions-overlay{opacity:1;background:linear-gradient(to top,rgba(8,7,10,0.6) 0%,transparent 45%)}
+}
+@media(max-width:500px){
+  .prod-overlay-btns{grid-template-columns:1fr}
+  .pob-cart{border-right:none;border-bottom:1px solid rgba(201,146,42,0.2)}
+}
 
 /* REVIEWS */
 .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -796,6 +840,183 @@ footer{
   .products-grid{grid-template-columns:1fr}
 }
 
+/* ===== CART PANEL ===== */
+#cart-panel{
+  position:fixed;top:0;right:0;bottom:0;z-index:4000;
+  width:380px;max-width:100vw;
+  background:var(--bg2);border-left:1px solid var(--border);
+  display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform 0.32s cubic-bezier(.25,.46,.45,.94);
+}
+#cart-panel.open{transform:none}
+
+#cart-backdrop{
+  display:none;position:fixed;inset:0;z-index:3999;
+  background:rgba(4,3,6,0.6);backdrop-filter:blur(4px);
+}
+#cart-backdrop.open{display:block}
+
+.cart-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 24px 20px;border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+.cart-title{
+  font-family:var(--font-d);font-size:20px;font-weight:600;letter-spacing:2px;
+  display:flex;align-items:center;gap:10px;
+}
+.cart-count-badge{
+  background:var(--gold);color:var(--bg);
+  font-family:var(--font-u);font-size:10px;font-weight:700;letter-spacing:1px;
+  padding:2px 7px;min-width:20px;text-align:center;
+}
+.cart-close-btn{
+  background:none;border:none;cursor:pointer;color:var(--muted);
+  padding:4px;transition:color 0.2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.cart-close-btn:hover{color:var(--gold)}
+.cart-close-btn svg{width:18px;height:18px;stroke:currentColor;fill:none}
+
+.cart-items{flex:1;overflow-y:auto;padding:16px 24px}
+.cart-empty{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;text-align:center;color:var(--muted);gap:16px;padding:40px 0;
+}
+.cart-empty svg{width:40px;height:40px;stroke:var(--border-bright);fill:none;opacity:0.6}
+.cart-empty p{font-size:13px;letter-spacing:1px}
+
+.cart-item{
+  display:grid;grid-template-columns:56px 1fr auto;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--border);align-items:start;
+}
+.cart-item-img{
+  width:56px;height:56px;object-fit:cover;background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;font-size:26px;
+  flex-shrink:0;
+}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.ci-name{font-family:var(--font-d);font-size:14px;font-weight:600;margin-bottom:3px;line-height:1.2}
+.ci-size{font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.ci-price{font-size:13px;color:var(--gold)}
+.ci-qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.ci-qty-btn{
+  width:22px;height:22px;background:var(--bg);border:1px solid var(--border);
+  color:var(--cream);font-size:14px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color 0.18s;line-height:1;
+}
+.ci-qty-btn:hover{border-color:var(--gold);color:var(--gold)}
+.ci-qty-num{font-size:13px;min-width:16px;text-align:center}
+.ci-remove{
+  background:none;border:none;cursor:pointer;color:var(--muted);
+  padding:2px;transition:color 0.18s;align-self:start;
+}
+.ci-remove:hover{color:#e05}
+.ci-remove svg{width:14px;height:14px;stroke:currentColor;fill:none}
+
+.cart-footer{
+  padding:20px 24px;border-top:1px solid var(--border);flex-shrink:0;
+}
+.cart-subtotal{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:16px;
+}
+.cart-subtotal span:first-child{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.cart-subtotal span:last-child{font-family:var(--font-d);font-size:24px;font-weight:700;color:var(--gold)}
+.cart-checkout-btn{
+  width:100%;padding:15px;
+  background:linear-gradient(135deg,#128C7E,#25D366);
+  color:#fff;font-family:var(--font-u);font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:opacity 0.2s,transform 0.15s;
+}
+.cart-checkout-btn:hover{opacity:0.9;transform:translateY(-1px)}
+.cart-checkout-btn svg{width:18px;height:18px;fill:#fff}
+.cart-keep{
+  display:block;text-align:center;margin-top:12px;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);
+  background:none;border:none;cursor:pointer;width:100%;
+  transition:color 0.2s;
+}
+.cart-keep:hover{color:var(--gold)}
+
+/* Cart FAB counter */
+#cart-fab{
+  position:fixed;top:50%;right:0;z-index:998;
+  transform:translateY(-50%);
+  background:var(--bg2);border:1px solid var(--border);border-right:none;
+  padding:14px 10px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  transition:border-color 0.2s,background 0.2s;
+}
+#cart-fab:hover{border-color:var(--gold);background:var(--bg3)}
+#cart-fab svg{width:18px;height:18px;stroke:var(--gold);fill:none}
+#cart-fab-count{
+  font-size:10px;font-weight:700;color:var(--gold);
+  min-width:16px;text-align:center;display:none;
+}
+
+/* ===== ACTION MODAL (Add to Cart or Buy) ===== */
+#action-overlay{
+  display:none;position:fixed;inset:0;z-index:3500;
+  background:rgba(4,3,6,0.85);backdrop-filter:blur(8px);
+  align-items:flex-end;justify-content:center;
+}
+#action-overlay.open{display:flex}
+.action-sheet{
+  width:100%;max-width:520px;
+  background:var(--bg2);border:1px solid var(--border-bright);
+  border-bottom:none;padding:32px 32px 36px;
+  animation:slideUp 0.28s cubic-bezier(.25,.46,.45,.94);
+}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+
+.action-product{
+  display:flex;gap:16px;align-items:center;
+  margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border);
+}
+.action-thumb{
+  width:64px;height:64px;object-fit:cover;background:var(--bg3);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:30px;overflow:hidden;
+}
+.action-thumb img{width:100%;height:100%;object-fit:cover}
+.action-prod-name{font-family:var(--font-d);font-size:18px;font-weight:600;letter-spacing:0.5px;margin-bottom:4px}
+.action-prod-price{font-size:14px;color:var(--gold)}
+
+.action-size-wrap{margin-bottom:20px}
+.action-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:block}
+.size-chips{display:flex;flex-wrap:wrap;gap:8px}
+.size-chip{
+  padding:7px 14px;border:1px solid var(--border);
+  background:var(--bg);color:var(--muted);
+  font-family:var(--font-u);font-size:11px;font-weight:600;letter-spacing:1px;
+  cursor:pointer;transition:border-color 0.18s,color 0.18s,background 0.18s;
+}
+.size-chip:hover{border-color:var(--gold);color:var(--gold)}
+.size-chip.active{border-color:var(--gold-bright);color:var(--gold-bright);background:rgba(245,200,66,0.06)}
+
+.action-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.act-cart-btn,.act-buy-btn{
+  padding:14px;border:none;cursor:pointer;
+  font-family:var(--font-u);font-size:10px;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:opacity 0.18s,transform 0.15s;
+}
+.act-cart-btn{background:var(--bg3);border:1px solid var(--border);color:var(--gold)}
+.act-cart-btn:hover{border-color:var(--gold);background:rgba(201,146,42,0.08)}
+.act-buy-btn{background:var(--gold);color:var(--bg)}
+.act-buy-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.act-btn-icon{width:15px;height:15px;fill:currentColor;flex-shrink:0}
+.action-close{
+  position:absolute;top:16px;right:20px;
+  background:none;border:none;cursor:pointer;color:var(--muted);
+  font-size:20px;line-height:1;transition:color 0.18s;
+}
+.action-close:hover{color:var(--cream)}
+.action-sheet{position:relative}
+
 /* ===== CHECKOUT MODAL ===== */
 #checkout-overlay{
   display:none;position:fixed;inset:0;z-index:3000;
@@ -925,6 +1146,69 @@ footer{
   </div>
   <div id="admin-content"></div>
   <button class="admin-save" onclick="saveAdmin()">SALVAR ALTERAÇÕES E RECARREGAR</button>
+</div>
+
+<!-- CART BACKDROP -->
+<div id="cart-backdrop" onclick="closeCart()"></div>
+
+<!-- CART PANEL -->
+<div id="cart-panel">
+  <div class="cart-head">
+    <div class="cart-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+      Carrinho
+      <span class="cart-count-badge" id="cart-count-badge">0</span>
+    </div>
+    <button class="cart-close-btn" onclick="closeCart()">
+      <svg viewBox="0 0 24 24" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cart-items-list"></div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cart-subtotal-val">R$ 0,00</span>
+    </div>
+    <button class="cart-checkout-btn" onclick="sendCartCheckout()">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Finalizar via WhatsApp
+    </button>
+    <button class="cart-keep" onclick="closeCart()">Continuar comprando</button>
+  </div>
+</div>
+
+<!-- CART FAB -->
+<button id="cart-fab" onclick="openCart()" title="Ver carrinho">
+  <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+  <span id="cart-fab-count">0</span>
+</button>
+
+<!-- ACTION SHEET (Add to cart or Buy now) -->
+<div id="action-overlay" onclick="if(event.target===this)closeAction()">
+  <div class="action-sheet" id="action-sheet">
+    <button class="action-close" onclick="closeAction()">✕</button>
+    <div class="action-product" id="action-product-info"></div>
+    <div class="action-size-wrap" id="action-size-wrap" style="display:none">
+      <span class="action-label">Selecione o tamanho</span>
+      <div class="size-chips" id="action-size-chips">
+        <div class="size-chip" onclick="selectSize(this,'P')">P</div>
+        <div class="size-chip" onclick="selectSize(this,'M')">M</div>
+        <div class="size-chip" onclick="selectSize(this,'G')">G</div>
+        <div class="size-chip" onclick="selectSize(this,'GG')">GG</div>
+        <div class="size-chip" onclick="selectSize(this,'XG')">XG</div>
+      </div>
+    </div>
+    <div class="action-btns">
+      <button class="act-cart-btn" id="act-cart-btn" onclick="doAddToCart()">
+        <svg class="act-btn-icon" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+        Adicionar
+      </button>
+      <button class="act-buy-btn" id="act-buy-btn" onclick="doBuyNow()">
+        <svg class="act-btn-icon" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+        Comprar agora
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- CHECKOUT MODAL -->
@@ -1261,18 +1545,32 @@ function render(){
           : `<span class="prod-emoji">${sanitize(p.emoji)}</span>`
         }
         <span class="prod-badge">${sanitize(p.badge)}</span>
+        <div class="prod-actions-overlay">
+          <div class="prod-overlay-btns">
+            <button class="pob-cart" onclick="openAction(${p.id},'cart')">
+              <svg class="pob-icon" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+              Carrinho
+            </button>
+            <button class="pob-buy" onclick="openAction(${p.id},'buy')">
+              <svg class="pob-icon" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+              Comprar
+            </button>
+          </div>
+        </div>
       </div>
       <div class="prod-info">
         <div class="prod-cat">${sanitize(p.category)}</div>
         <div class="prod-name">${sanitize(p.name)}</div>
         <div class="prod-desc">${sanitize(p.description)}</div>
-        <div class="prod-prices">
-          <span class="prod-price">${sanitize(p.price)}</span>
-          ${p.oldPrice ? `<span class="prod-old">${sanitize(p.oldPrice)}</span>` : ''}
+        <div class="prod-footer">
+          <div class="prod-prices">
+            <span class="prod-price">${sanitize(p.price)}</span>
+            ${p.oldPrice ? `<span class="prod-old">${sanitize(p.oldPrice)}</span>` : ''}
+          </div>
+          <button class="prod-cart-btn" onclick="openAction(${p.id},'cart')" title="Adicionar ao carrinho">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+          </button>
         </div>
-        <button class="prod-cta" onclick="openCheckout(${p.id})">
-          Quero este produto →
-        </button>
       </div>
     </div>
   `).join('');
@@ -1546,10 +1844,175 @@ async function saveAdmin(){
   alert('✅ Alterações salvas com sucesso!');
 }
 
+/* ===================== CART ===================== */
+let cart = []; // [{id, name, price, priceRaw, imgUrl, emoji, size, qty}]
+let actionMode = 'cart'; // 'cart' | 'buy'
+let actionProductId = null;
+let selectedSize = '';
+
+function parsePrice(str){
+  if(!str) return 0;
+  const n = parseFloat(str.replace(/[^\d,\.]/g,'').replace(',','.'));
+  return isNaN(n) ? 0 : n;
+}
+
+function formatBRL(val){
+  return 'R$ ' + val.toFixed(2).replace('.',',');
+}
+
+function openAction(productId, mode){
+  actionProductId = productId;
+  actionMode = mode;
+  selectedSize = '';
+  const p = cfg.products.find(x=>x.id===productId);
+  if(!p) return;
+
+  // Product info
+  const thumb = p.imgUrl
+    ? `<div class="action-thumb"><img src="${sanitize(p.imgUrl)}" alt="${sanitize(p.name)}"></div>`
+    : `<div class="action-thumb">${sanitize(p.emoji||'🛍️')}</div>`;
+  document.getElementById('action-product-info').innerHTML =
+    `${thumb}<div><div class="action-prod-name">${sanitize(p.name)}</div><div class="action-prod-price">${sanitize(p.price)}</div></div>`;
+
+  // Size chips
+  const isClothing = p.category === 'Vestuário';
+  const sw = document.getElementById('action-size-wrap');
+  sw.style.display = isClothing ? 'block' : 'none';
+  document.querySelectorAll('.size-chip').forEach(c=>c.classList.remove('active'));
+
+  // Button labels
+  document.getElementById('act-cart-btn').innerHTML = `
+    <svg class="act-btn-icon" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+    Adicionar`;
+  document.getElementById('act-buy-btn').innerHTML = `
+    <svg class="act-btn-icon" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+    Comprar agora`;
+
+  document.getElementById('action-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAction(){
+  document.getElementById('action-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selectSize(el, size){
+  document.querySelectorAll('.size-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  selectedSize = size;
+}
+
+function doAddToCart(){
+  const p = cfg.products.find(x=>x.id===actionProductId);
+  if(!p) return;
+  if(p.category==='Vestuário' && !selectedSize){
+    alert('Selecione um tamanho.'); return;
+  }
+  const key = p.id + '-' + (selectedSize||'');
+  const existing = cart.find(c=>c.key===key);
+  if(existing){ existing.qty++; }
+  else {
+    cart.push({key, id:p.id, name:p.name, price:p.price, priceRaw:parsePrice(p.price), imgUrl:p.imgUrl, emoji:p.emoji||'🛍️', size:selectedSize, qty:1});
+  }
+  updateCartUI();
+  closeAction();
+  // Quick feedback
+  openCart();
+}
+
+function doBuyNow(){
+  const p = cfg.products.find(x=>x.id===actionProductId);
+  if(!p) return;
+  if(p.category==='Vestuário' && !selectedSize){
+    alert('Selecione um tamanho.'); return;
+  }
+  closeAction();
+  openCheckout(actionProductId, selectedSize);
+}
+
+function updateCartUI(){
+  const total = cart.reduce((s,c)=>s+c.priceRaw*c.qty,0);
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+
+  // Badge
+  document.getElementById('cart-count-badge').textContent = count;
+  const fabCount = document.getElementById('cart-fab-count');
+  fabCount.textContent = count;
+  fabCount.style.display = count > 0 ? 'block' : 'none';
+
+  // Items list
+  const listEl = document.getElementById('cart-items-list');
+  const footerEl = document.getElementById('cart-footer');
+
+  if(cart.length === 0){
+    listEl.innerHTML = `<div class="cart-empty">
+      <svg viewBox="0 0 24 24" stroke-width="1"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+      <p>Seu carrinho está vazio</p>
+    </div>`;
+    footerEl.style.display = 'none';
+    return;
+  }
+
+  listEl.innerHTML = cart.map((c,i)=>`
+    <div class="cart-item">
+      ${c.imgUrl
+        ? `<div class="cart-item-img"><img src="${sanitize(c.imgUrl)}" alt="${sanitize(c.name)}"></div>`
+        : `<div class="cart-item-img">${sanitize(c.emoji)}</div>`}
+      <div>
+        <div class="ci-name">${sanitize(c.name)}</div>
+        ${c.size ? `<div class="ci-size">${sanitize(c.size)}</div>` : ''}
+        <div class="ci-price">${sanitize(c.price)}</div>
+        <div class="ci-qty">
+          <button class="ci-qty-btn" onclick="changeQty(${i},-1)">−</button>
+          <span class="ci-qty-num">${c.qty}</span>
+          <button class="ci-qty-btn" onclick="changeQty(${i},1)">+</button>
+        </div>
+      </div>
+      <button class="ci-remove" onclick="removeItem(${i})" title="Remover">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6M10 11v6M14 11v6M9 6V4h6v2"/></svg>
+      </button>
+    </div>
+  `).join('');
+
+  document.getElementById('cart-subtotal-val').textContent = formatBRL(total);
+  footerEl.style.display = 'block';
+}
+
+function changeQty(index, delta){
+  cart[index].qty += delta;
+  if(cart[index].qty <= 0) cart.splice(index,1);
+  updateCartUI();
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  updateCartUI();
+}
+
+function openCart(){
+  updateCartUI();
+  document.getElementById('cart-panel').classList.add('open');
+  document.getElementById('cart-backdrop').classList.add('open');
+}
+
+function closeCart(){
+  document.getElementById('cart-panel').classList.remove('open');
+  document.getElementById('cart-backdrop').classList.remove('open');
+}
+
+function sendCartCheckout(){
+  if(cart.length===0) return;
+  closeCart();
+  openCheckout(null, '', cart);
+}
+
 /* ===================== CHECKOUT ===================== */
 let checkoutProduct = null;
+let checkoutSize = '';
+let checkoutCart = null;
 
-function openCheckout(productId){
+function openCheckout(productId, size, cartItems){
   // Reset form
   ['co-nome','co-tel','co-cpf','co-cep','co-numero','co-rua','co-bairro','co-comp','co-cidade','co-obs']
     .forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
@@ -1557,24 +2020,30 @@ function openCheckout(productId){
   document.getElementById('co-size').value = '';
   document.querySelectorAll('.pay-opt').forEach(el=>el.classList.remove('selected'));
 
-  if(productId){
+  checkoutCart = cartItems || null;
+  checkoutSize = size || '';
+
+  if(cartItems){
+    checkoutProduct = null;
+    const total = cartItems.reduce((s,c)=>s+c.priceRaw*c.qty,0);
+    const lines = cartItems.map(c=>`${c.name}${c.size?' ('+c.size+')':''} × ${c.qty}`).join(', ');
+    document.getElementById('co-product-info').innerHTML =
+      `<div class="prod-thumb-emoji">🛒</div><div class="info-text"><div class="name">${lines.length > 50 ? lines.slice(0,50)+'…' : lines}</div><div class="price">${formatBRL(total)}</div></div>`;
+    document.getElementById('co-size-wrap').style.display = 'none';
+  } else if(productId){
     checkoutProduct = cfg.products.find(p=>p.id===productId) || null;
   } else {
     checkoutProduct = null;
   }
 
-  // Product info box
-  const infoEl = document.getElementById('co-product-info');
-  if(checkoutProduct){
+  if(checkoutProduct && !checkoutCart){
     const thumb = checkoutProduct.imgUrl
       ? `<img class="prod-thumb" src="${sanitize(checkoutProduct.imgUrl)}" alt="${sanitize(checkoutProduct.name)}">`
       : `<div class="prod-thumb-emoji">${sanitize(checkoutProduct.emoji||'🛍️')}</div>`;
-    infoEl.innerHTML = `${thumb}<div class="info-text"><div class="name">${sanitize(checkoutProduct.name)}</div><div class="price">${sanitize(checkoutProduct.price)}</div></div>`;
-    // Mostrar campo tamanho para vestuário
-    const isClothing = checkoutProduct.category === 'Vestuário';
-    document.getElementById('co-size-wrap').style.display = isClothing ? 'block' : 'none';
-  } else {
-    infoEl.innerHTML = `<div class="prod-thumb-emoji">🛍️</div><div class="info-text"><div class="name">Oferta GR Store</div><div class="price">Consultar</div></div>`;
+    document.getElementById('co-product-info').innerHTML = `${thumb}<div class="info-text"><div class="name">${sanitize(checkoutProduct.name)}${checkoutSize?' — '+checkoutSize:''}</div><div class="price">${sanitize(checkoutProduct.price)}</div></div>`;
+    document.getElementById('co-size-wrap').style.display = 'none'; // size already chosen
+  } else if(!checkoutCart){
+    document.getElementById('co-product-info').innerHTML = `<div class="prod-thumb-emoji">🛍️</div><div class="info-text"><div class="name">Oferta GR Store</div><div class="price">Consultar</div></div>`;
     document.getElementById('co-size-wrap').style.display = 'none';
   }
 
@@ -1630,7 +2099,7 @@ function sendCheckout(){
   if(!pagamento){ alert('Por favor, selecione a forma de pagamento.'); return; }
 
   const isClothing = checkoutProduct && checkoutProduct.category === 'Vestuário';
-  if(isClothing && !size){ alert('Por favor, selecione o tamanho.'); return; }
+  if(isClothing && !size && !checkoutSize){ alert('Por favor, selecione o tamanho.'); return; }
 
   // Montar endereço
   let endereco = rua;
@@ -1640,15 +2109,24 @@ function sendCheckout(){
   endereco += ', ' + cidade + ' - ' + estado;
   if(cep)    endereco += ' · CEP: ' + cep;
 
-  // Montar mensagem
-  const prodNome = checkoutProduct ? checkoutProduct.name : 'Oferta GR Store';
-  const prodPreco = checkoutProduct ? checkoutProduct.price : '';
+  // Montar itens
+  let prodInfo = '';
+  if(checkoutCart && checkoutCart.length > 0){
+    const total = checkoutCart.reduce((s,c)=>s+c.priceRaw*c.qty,0);
+    prodInfo = checkoutCart.map(c=>`  • ${c.name}${c.size?' ('+c.size+')':''} × ${c.qty} — ${c.price}`).join('\n');
+    prodInfo = `🛒 *Itens do carrinho:*\n${prodInfo}\n💰 *Total estimado:* ${formatBRL(total)}`;
+  } else {
+    const prodNome  = checkoutProduct ? checkoutProduct.name : 'Oferta GR Store';
+    const prodPreco = checkoutProduct ? checkoutProduct.price : '';
+    const finalSize = checkoutSize || size;
+    prodInfo = `📦 *Produto:* ${prodNome}\n`;
+    if(prodPreco) prodInfo += `💰 *Preço:* ${prodPreco}\n`;
+    if(finalSize) prodInfo += `📐 *Tamanho:* ${finalSize}`;
+  }
 
   let msg = `🛍️ *NOVO PEDIDO — GR STORE*\n`;
   msg += `━━━━━━━━━━━━━━━━━━\n`;
-  msg += `📦 *Produto:* ${prodNome}\n`;
-  if(prodPreco) msg += `💰 *Preço:* ${prodPreco}\n`;
-  if(isClothing && size) msg += `📐 *Tamanho:* ${size}\n`;
+  msg += prodInfo + '\n';
   msg += `━━━━━━━━━━━━━━━━━━\n`;
   msg += `👤 *Nome:* ${nome}\n`;
   msg += `📱 *WhatsApp:* ${tel}\n`;
@@ -1662,6 +2140,8 @@ function sendCheckout(){
   msg += `✅ Aguardo confirmação do pedido!`;
 
   window.open(`https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+  // Clear cart if was cart checkout
+  if(checkoutCart){ cart = []; updateCartUI(); }
   closeCheckout();
 }
 
