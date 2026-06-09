@@ -795,6 +795,114 @@ footer{
 @media(max-width:500px){
   .products-grid{grid-template-columns:1fr}
 }
+
+/* ===== CHECKOUT MODAL ===== */
+#checkout-overlay{
+  display:none;position:fixed;inset:0;z-index:3000;
+  background:rgba(4,3,6,0.96);backdrop-filter:blur(12px);
+  overflow-y:auto;padding:40px 5%;
+}
+#checkout-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+.checkout-box{
+  width:100%;max-width:600px;
+  background:var(--bg2);border:1px solid var(--border-bright);
+  padding:48px 44px;position:relative;margin:auto;
+}
+.checkout-box::before,.checkout-box::after{
+  content:'';position:absolute;width:28px;height:28px;
+  border-color:var(--gold-bright);border-style:solid;
+}
+.checkout-box::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.checkout-box::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+
+.checkout-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border);
+}
+.checkout-header h2{font-family:var(--font-d);font-size:28px;font-weight:700;letter-spacing:2px}
+#checkout-close{
+  background:transparent;border:1px solid var(--border);color:var(--muted);
+  padding:8px 16px;font-family:var(--font-u);font-size:11px;letter-spacing:2px;cursor:pointer;
+  transition:color 0.3s,border-color 0.3s;
+}
+#checkout-close:hover{color:var(--gold);border-color:var(--gold)}
+
+.checkout-product-info{
+  display:flex;align-items:center;gap:16px;
+  background:var(--bg3);border:1px solid var(--border);
+  padding:16px;margin-bottom:32px;
+}
+.checkout-product-info .prod-thumb{
+  width:60px;height:60px;object-fit:cover;flex-shrink:0;
+}
+.checkout-product-info .prod-thumb-emoji{
+  width:60px;height:60px;font-size:36px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bg);flex-shrink:0;
+}
+.checkout-product-info .info-text .name{
+  font-family:var(--font-d);font-size:17px;font-weight:600;letter-spacing:1px;
+}
+.checkout-product-info .info-text .price{
+  font-size:14px;color:var(--gold);margin-top:4px;
+}
+
+.co-section-title{
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:18px;margin-top:28px;padding-bottom:8px;border-bottom:1px solid var(--border);
+}
+.co-field{margin-bottom:16px}
+.co-field label{display:block;font-size:11px;letter-spacing:2px;color:var(--muted);margin-bottom:6px;text-transform:uppercase}
+.co-field input,.co-field select,.co-field textarea{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  color:var(--cream);font-family:var(--font-u);font-size:14px;
+  padding:11px 14px;outline:none;transition:border-color 0.3s;
+  -webkit-appearance:none;appearance:none;
+}
+.co-field input:focus,.co-field select:focus,.co-field textarea:focus{border-color:var(--gold)}
+.co-field select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9922a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;
+}
+.co-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.co-row-3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px}
+
+.payment-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px}
+.pay-opt{
+  background:var(--bg);border:1px solid var(--border);
+  padding:14px 10px;text-align:center;cursor:pointer;
+  transition:border-color 0.3s,background 0.3s;
+  font-family:var(--font-u);font-size:11px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--muted);
+}
+.pay-opt:hover{border-color:var(--gold);color:var(--gold)}
+.pay-opt.selected{border-color:var(--gold-bright);background:rgba(245,200,66,0.07);color:var(--gold-bright)}
+.pay-opt .pay-icon{font-size:22px;display:block;margin-bottom:6px}
+
+.co-obs{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  color:var(--cream);font-family:var(--font-u);font-size:13px;
+  padding:11px 14px;outline:none;transition:border-color 0.3s;resize:vertical;min-height:60px;
+}
+.co-obs:focus{border-color:var(--gold)}
+
+.checkout-send-btn{
+  width:100%;padding:16px;margin-top:28px;
+  background:linear-gradient(135deg,#128C7E,#25D366);
+  color:#fff;font-family:var(--font-u);font-size:13px;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;
+  transition:opacity 0.3s,transform 0.2s;display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.checkout-send-btn:hover{opacity:0.88;transform:translateY(-2px)}
+.checkout-send-btn svg{width:22px;height:22px;fill:#fff}
+
+.co-required{color:#e05;font-size:11px;margin-left:2px}
+
+@media(max-width:600px){
+  .checkout-box{padding:32px 20px}
+  .payment-options{grid-template-columns:1fr 1fr}
+  .co-row,.co-row-3{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -817,6 +925,125 @@ footer{
   </div>
   <div id="admin-content"></div>
   <button class="admin-save" onclick="saveAdmin()">SALVAR ALTERAÇÕES E RECARREGAR</button>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkout-overlay">
+  <div class="checkout-box">
+    <div class="checkout-header">
+      <h2 class="g">FINALIZAR PEDIDO</h2>
+      <button id="checkout-close" onclick="closeCheckout()">✕ Fechar</button>
+    </div>
+
+    <!-- Produto selecionado -->
+    <div class="checkout-product-info" id="co-product-info"></div>
+
+    <!-- Tamanho (somente vestuário) -->
+    <div id="co-size-wrap" style="display:none">
+      <div class="co-section-title">Tamanho</div>
+      <div class="co-field">
+        <label>Selecione o tamanho <span class="co-required">*</span></label>
+        <select id="co-size">
+          <option value="">-- Selecionar --</option>
+          <option>P</option><option>M</option><option>G</option><option>GG</option><option>XG</option>
+          <option>Único (Boné/Acessório)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Dados de entrega -->
+    <div class="co-section-title">Dados de Entrega</div>
+    <div class="co-field">
+      <label>Nome completo <span class="co-required">*</span></label>
+      <input type="text" id="co-nome" placeholder="Seu nome completo">
+    </div>
+    <div class="co-row">
+      <div class="co-field">
+        <label>WhatsApp <span class="co-required">*</span></label>
+        <input type="tel" id="co-tel" placeholder="(16) 99999-9999">
+      </div>
+      <div class="co-field">
+        <label>CPF</label>
+        <input type="text" id="co-cpf" placeholder="000.000.000-00">
+      </div>
+    </div>
+    <div class="co-row">
+      <div class="co-field">
+        <label>CEP <span class="co-required">*</span></label>
+        <input type="text" id="co-cep" placeholder="00000-000" maxlength="9">
+      </div>
+      <div class="co-field">
+        <label>Número</label>
+        <input type="text" id="co-numero" placeholder="Nº">
+      </div>
+    </div>
+    <div class="co-field">
+      <label>Rua / Logradouro <span class="co-required">*</span></label>
+      <input type="text" id="co-rua" placeholder="Nome da rua">
+    </div>
+    <div class="co-row">
+      <div class="co-field">
+        <label>Bairro</label>
+        <input type="text" id="co-bairro" placeholder="Bairro">
+      </div>
+      <div class="co-field">
+        <label>Complemento</label>
+        <input type="text" id="co-comp" placeholder="Apto, bloco...">
+      </div>
+    </div>
+    <div class="co-row">
+      <div class="co-field">
+        <label>Cidade <span class="co-required">*</span></label>
+        <input type="text" id="co-cidade" placeholder="Cidade">
+      </div>
+      <div class="co-field">
+        <label>Estado <span class="co-required">*</span></label>
+        <select id="co-estado">
+          <option value="">UF</option>
+          <option>AC</option><option>AL</option><option>AM</option><option>AP</option>
+          <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+          <option>GO</option><option>MA</option><option>MG</option><option>MS</option>
+          <option>MT</option><option>PA</option><option>PB</option><option>PE</option>
+          <option>PI</option><option>PR</option><option>RJ</option><option>RN</option>
+          <option>RO</option><option>RR</option><option>RS</option><option>SC</option>
+          <option>SE</option><option>SP</option><option>TO</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Forma de pagamento -->
+    <div class="co-section-title">Forma de Pagamento</div>
+    <div class="payment-options">
+      <div class="pay-opt" data-pay="Pix" onclick="selectPay(this)">
+        <span class="pay-icon">💠</span>Pix
+      </div>
+      <div class="pay-opt" data-pay="Cartão de Crédito" onclick="selectPay(this)">
+        <span class="pay-icon">💳</span>Cartão Crédito
+      </div>
+      <div class="pay-opt" data-pay="Cartão de Débito" onclick="selectPay(this)">
+        <span class="pay-icon">🏧</span>Cartão Débito
+      </div>
+      <div class="pay-opt" data-pay="Boleto" onclick="selectPay(this)">
+        <span class="pay-icon">📄</span>Boleto
+      </div>
+      <div class="pay-opt" data-pay="Dinheiro" onclick="selectPay(this)">
+        <span class="pay-icon">💵</span>Dinheiro
+      </div>
+      <div class="pay-opt" data-pay="Parcelado" onclick="selectPay(this)">
+        <span class="pay-icon">🔄</span>Parcelado
+      </div>
+    </div>
+
+    <!-- Observações -->
+    <div class="co-section-title" style="margin-top:24px">Observações (opcional)</div>
+    <textarea class="co-obs" id="co-obs" placeholder="Alguma observação sobre o pedido? Ex: presente, cor preferida..."></textarea>
+
+    <!-- Botão enviar -->
+    <button class="checkout-send-btn" onclick="sendCheckout()">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      ENVIAR PEDIDO VIA WHATSAPP
+    </button>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -1043,7 +1270,7 @@ function render(){
           <span class="prod-price">${sanitize(p.price)}</span>
           ${p.oldPrice ? `<span class="prod-old">${sanitize(p.oldPrice)}</span>` : ''}
         </div>
-        <button class="prod-cta" onclick="window.open('${sanitize(wa('Quero comprar ' + p.name))}','_blank','noopener,noreferrer')">
+        <button class="prod-cta" onclick="openCheckout(${p.id})">
           Quero este produto →
         </button>
       </div>
@@ -1066,7 +1293,8 @@ function render(){
   document.getElementById('offer-urgency-el').textContent = cfg.offerUrgency;
   const offerCta = document.getElementById('offer-cta-el');
   offerCta.textContent = '▶ ' + cfg.offerCTA;
-  offerCta.href = cfg.offerLink || wa(cfg.offerCTA);
+  offerCta.href = '#';
+  offerCta.onclick = function(e){ e.preventDefault(); openCheckout(null); };
 
   /* WA FAB & FOOTER */
   document.getElementById('wa-link').href = wa();
@@ -1317,6 +1545,130 @@ async function saveAdmin(){
   render();
   alert('✅ Alterações salvas com sucesso!');
 }
+
+/* ===================== CHECKOUT ===================== */
+let checkoutProduct = null;
+
+function openCheckout(productId){
+  // Reset form
+  ['co-nome','co-tel','co-cpf','co-cep','co-numero','co-rua','co-bairro','co-comp','co-cidade','co-obs']
+    .forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('co-estado').value = '';
+  document.getElementById('co-size').value = '';
+  document.querySelectorAll('.pay-opt').forEach(el=>el.classList.remove('selected'));
+
+  if(productId){
+    checkoutProduct = cfg.products.find(p=>p.id===productId) || null;
+  } else {
+    checkoutProduct = null;
+  }
+
+  // Product info box
+  const infoEl = document.getElementById('co-product-info');
+  if(checkoutProduct){
+    const thumb = checkoutProduct.imgUrl
+      ? `<img class="prod-thumb" src="${sanitize(checkoutProduct.imgUrl)}" alt="${sanitize(checkoutProduct.name)}">`
+      : `<div class="prod-thumb-emoji">${sanitize(checkoutProduct.emoji||'🛍️')}</div>`;
+    infoEl.innerHTML = `${thumb}<div class="info-text"><div class="name">${sanitize(checkoutProduct.name)}</div><div class="price">${sanitize(checkoutProduct.price)}</div></div>`;
+    // Mostrar campo tamanho para vestuário
+    const isClothing = checkoutProduct.category === 'Vestuário';
+    document.getElementById('co-size-wrap').style.display = isClothing ? 'block' : 'none';
+  } else {
+    infoEl.innerHTML = `<div class="prod-thumb-emoji">🛍️</div><div class="info-text"><div class="name">Oferta GR Store</div><div class="price">Consultar</div></div>`;
+    document.getElementById('co-size-wrap').style.display = 'none';
+  }
+
+  document.getElementById('checkout-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckout(){
+  document.getElementById('checkout-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selectPay(el){
+  document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// Máscara CEP
+document.addEventListener('DOMContentLoaded', function(){
+  const cepEl = document.getElementById('co-cep');
+  if(cepEl){
+    cepEl.addEventListener('input', function(){
+      let v = this.value.replace(/\D/g,'').slice(0,8);
+      if(v.length>5) v = v.slice(0,5)+'-'+v.slice(5);
+      this.value = v;
+    });
+  }
+});
+
+function sendCheckout(){
+  const nome    = document.getElementById('co-nome').value.trim();
+  const tel     = document.getElementById('co-tel').value.trim();
+  const cep     = document.getElementById('co-cep').value.trim();
+  const rua     = document.getElementById('co-rua').value.trim();
+  const cidade  = document.getElementById('co-cidade').value.trim();
+  const estado  = document.getElementById('co-estado').value.trim();
+  const numero  = document.getElementById('co-numero').value.trim();
+  const bairro  = document.getElementById('co-bairro').value.trim();
+  const comp    = document.getElementById('co-comp').value.trim();
+  const cpf     = document.getElementById('co-cpf').value.trim();
+  const obs     = document.getElementById('co-obs').value.trim();
+  const size    = document.getElementById('co-size').value.trim();
+  const payEl   = document.querySelector('.pay-opt.selected');
+  const pagamento = payEl ? payEl.dataset.pay : '';
+
+  // Validação
+  if(!nome){ alert('Por favor, informe seu nome completo.'); return; }
+  if(!tel){  alert('Por favor, informe seu WhatsApp.'); return; }
+  if(!cep){  alert('Por favor, informe o CEP.'); return; }
+  if(!rua){  alert('Por favor, informe a rua/logradouro.'); return; }
+  if(!cidade){ alert('Por favor, informe a cidade.'); return; }
+  if(!estado){ alert('Por favor, selecione o estado.'); return; }
+  if(!pagamento){ alert('Por favor, selecione a forma de pagamento.'); return; }
+
+  const isClothing = checkoutProduct && checkoutProduct.category === 'Vestuário';
+  if(isClothing && !size){ alert('Por favor, selecione o tamanho.'); return; }
+
+  // Montar endereço
+  let endereco = rua;
+  if(numero) endereco += ', ' + numero;
+  if(comp)   endereco += ' - ' + comp;
+  if(bairro) endereco += ', ' + bairro;
+  endereco += ', ' + cidade + ' - ' + estado;
+  if(cep)    endereco += ' · CEP: ' + cep;
+
+  // Montar mensagem
+  const prodNome = checkoutProduct ? checkoutProduct.name : 'Oferta GR Store';
+  const prodPreco = checkoutProduct ? checkoutProduct.price : '';
+
+  let msg = `🛍️ *NOVO PEDIDO — GR STORE*\n`;
+  msg += `━━━━━━━━━━━━━━━━━━\n`;
+  msg += `📦 *Produto:* ${prodNome}\n`;
+  if(prodPreco) msg += `💰 *Preço:* ${prodPreco}\n`;
+  if(isClothing && size) msg += `📐 *Tamanho:* ${size}\n`;
+  msg += `━━━━━━━━━━━━━━━━━━\n`;
+  msg += `👤 *Nome:* ${nome}\n`;
+  msg += `📱 *WhatsApp:* ${tel}\n`;
+  if(cpf) msg += `🪪 *CPF:* ${cpf}\n`;
+  msg += `━━━━━━━━━━━━━━━━━━\n`;
+  msg += `📍 *Endereço de entrega:*\n${endereco}\n`;
+  msg += `━━━━━━━━━━━━━━━━━━\n`;
+  msg += `💳 *Pagamento:* ${pagamento}\n`;
+  if(obs) msg += `📝 *Observações:* ${obs}\n`;
+  msg += `━━━━━━━━━━━━━━━━━━\n`;
+  msg += `✅ Aguardo confirmação do pedido!`;
+
+  window.open(`https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+  closeCheckout();
+}
+
+// Fechar ao clicar fora do box
+document.getElementById('checkout-overlay').addEventListener('click', function(e){
+  if(e.target === this) closeCheckout();
+});
 
 /* ===================== INIT ===================== */
 render();
